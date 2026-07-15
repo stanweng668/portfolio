@@ -31,13 +31,14 @@ body[data-theme="dark"] {
 
 html { scroll-behavior: smooth; }
 
+html {
+  color-scheme: only light;
+  background: #ffffff;
+}
+
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: calc(14px * var(--font-scale));
-  line-height: 1.85;
-  -webkit-font-smoothing: antialiased;
+  background: #ffffff !important;
+  color: #1a1a1a !important;
 }
 
 a { color: inherit; text-decoration: none; }
