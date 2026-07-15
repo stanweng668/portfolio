@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 移动端顶栏 -->
+  <header class="mobile-bar">
+    <a href="#" class="mobile-name" id="mobileName"></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="展开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- 左侧导航(内容由 JS 生成) -->
+  <nav class="sidebar" id="sidebar" aria-label="作品导航">
+    <div class="sidebar-inner">
+      <a href="#" class="site-name" id="siteName"></a>
+      <div class="site-name-en" id="siteNameEn"></div>
+      <div class="nav-groups" id="navGroups"></div>
+    </div>
+  </nav>
+
+  <!-- 右侧内容区(由 JS 生成) -->
+  <main class="content" id="content">
+    <div class="loading" id="loading">Loading…</div>
+  </main>
+
+  <!-- 图片放大层 -->
+  <div class="lightbox" id="lightbox" hidden>
+    <img id="lightboxImg" alt="">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

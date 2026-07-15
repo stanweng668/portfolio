@@ -1,0 +1,246 @@
+/* ============================================================
+   摄影作品集模板
+   日常不需要改这个文件——布局参数在 data/config.json 里调。
+   只有想深度定制视觉风格时才需要动这里。
+   ============================================================ */
+
+:root {
+  /* 以下变量会被 config.json 的 layout 设置覆盖 */
+  --accent: #111111;
+  --sidebar-width: 240px;
+  --image-max-width: 960px;
+  --image-gap: 28px;
+  --font-scale: 1;
+
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-soft: #6b6b6b;
+  --hairline: #e6e6e6;
+
+  --font-body: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", Arial, sans-serif;
+}
+
+body[data-theme="dark"] {
+  --bg: #101010;
+  --text: #ececec;
+  --text-soft: #8f8f8f;
+  --hairline: #2a2a2a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: calc(14px * var(--font-scale));
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- 左侧导航 ---------- */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-width);
+  padding: 48px 32px;
+  overflow-y: auto;
+  border-right: 1px solid var(--hairline);
+  background: var(--bg);
+  z-index: 20;
+}
+
+.site-name {
+  display: block;
+  font-size: calc(19px * var(--font-scale));
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.site-name-en {
+  font-size: calc(12px * var(--font-scale));
+  color: var(--text-soft);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  margin-bottom: 44px;
+}
+
+.nav-group { margin-bottom: 30px; }
+
+.nav-group-title {
+  font-size: calc(11px * var(--font-scale));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  display: block;
+  padding: 4px 0;
+  font-size: calc(13.5px * var(--font-scale));
+  color: var(--text-soft);
+  transition: color .18s ease, transform .18s ease;
+}
+
+.nav-link:hover { color: var(--text); }
+
+.nav-link.active {
+  color: var(--accent);
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+.nav-link:focus-visible,
+.site-name:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- 右侧内容 ---------- */
+.content {
+  margin-left: var(--sidebar-width);
+  padding: 64px 56px 120px;
+  min-height: 100vh;
+}
+
+.loading { color: var(--text-soft); }
+
+.project { display: none; max-width: var(--image-max-width); margin: 0 auto; }
+.project.visible { display: block; animation: fadeIn .35s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.project-title {
+  font-size: calc(22px * var(--font-scale));
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+}
+
+.project-desc {
+  max-width: 640px;
+  color: var(--text);
+  margin-bottom: 48px;
+  white-space: pre-line;
+}
+
+/* 图片流:columns=1 时竖排,columns=2 时双列 */
+.image-flow {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 1), 1fr);
+  gap: var(--image-gap);
+}
+
+.image-flow img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+  background: var(--hairline);
+}
+
+/* ---------- 简介页 ---------- */
+.about-wrap {
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-text { flex: 1 1 380px; max-width: 620px; white-space: pre-line; }
+
+.about-portrait { flex: 0 1 320px; }
+.about-portrait img { width: 100%; height: auto; display: block; }
+
+.contact-block {
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+}
+
+.contact-title {
+  font-size: calc(11px * var(--font-scale));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.site-footer {
+  margin-top: 96px;
+  font-size: calc(11.5px * var(--font-scale));
+  color: var(--text-soft);
+}
+
+/* ---------- 图片放大 ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(8,8,8,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: zoom-out;
+  padding: 24px;
+}
+
+.lightbox img { max-width: 100%; max-height: 100%; }
+
+/* ---------- 移动端 ---------- */
+.mobile-bar { display: none; }
+
+@media (max-width: 820px) {
+  .mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    padding: 0 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--hairline);
+    z-index: 30;
+  }
+
+  .mobile-name { font-weight: 600; letter-spacing: 0.05em; }
+
+  .menu-toggle {
+    background: none; border: none; cursor: pointer;
+    display: flex; flex-direction: column; gap: 5px; padding: 8px;
+  }
+  .menu-toggle span {
+    width: 20px; height: 1.5px; background: var(--text); display: block;
+  }
+
+  .sidebar {
+    top: 56px;
+    width: 100%;
+    border-right: none;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    padding: 32px 24px;
+  }
+  .sidebar.open { transform: none; }
+  .sidebar .site-name, .sidebar .site-name-en { display: none; }
+
+  .content { margin-left: 0; padding: 88px 20px 80px; }
+
+  .about-wrap { gap: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project.visible { animation: none; }
+  .nav-link { transition: none; }
+}

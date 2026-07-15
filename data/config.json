@@ -1,0 +1,63 @@
+{
+  "site": {
+    "title": "你的名字 | Your Name | Photographer",
+    "nameZh": "你的名字",
+    "nameEn": "Your Name",
+    "footer": "© 2026 Your Name. All rights reserved."
+  },
+
+  "layout": {
+    "theme": "light",
+    "accentColor": "#111111",
+    "imageMaxWidth": 960,
+    "columns": 1,
+    "imageGap": 28,
+    "sidebarWidth": 240,
+    "fontScale": 1.0
+  },
+
+  "groups": [
+    {
+      "name": "Projects 项目",
+      "projects": [
+        {
+          "id": "distortion",
+          "title": "Distortion 失真",
+          "description": "这里写项目描述。该系列作品以低精度 3D 扫描现实物体为起点,通过三维软件进行再构与拼贴,生成一种不完整、脆弱且破碎的现实版本。\n\n支持空行分段:配置文件里用 \\n\\n 表示分段。",
+          "folder": "images/distortion",
+          "images": ["1.jpg", "2.jpg", "3.jpg"]
+        },
+        {
+          "id": "residual-heat",
+          "title": "Residual Heat 余温",
+          "description": "第二个示例项目。把新照片上传到 images/residual-heat/ 文件夹,再把文件名加到下面的 images 列表里即可。",
+          "folder": "images/residual-heat",
+          "images": ["1.jpg", "2.jpg"]
+        }
+      ]
+    },
+    {
+      "name": "Editorial",
+      "projects": [
+        {
+          "id": "commercial",
+          "title": "Commercial 商业摄影",
+          "description": "",
+          "folder": "images/commercial",
+          "images": ["1.jpg", "2.jpg", "3.jpg"]
+        }
+      ]
+    }
+  ],
+
+  "about": {
+    "title": "艺术家简介",
+    "bio": "这里写个人简介。介绍你的创作方向、关注的主题、代表作品等。\n\n第二段简介内容。",
+    "portrait": "images/portrait.jpg",
+    "contact": {
+      "phone": "+86 138 0000 0000 (微信同号)",
+      "email": "hello@example.com",
+      "extra": ""
+    }
+  }
+}
