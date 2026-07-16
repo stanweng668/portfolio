@@ -1,6 +1,8 @@
 /* ============================================================
-   日常不需要改这个文件。
-   所有内容和布局都在 data/config.json 里配置。
+   摄影作品集模板 v2 — 幻灯片展示模式
+   日常不需要改这个文件,内容都在 data/config.json 里配置。
+   项目页:第一页是"标题+描述"(描述为空则跳过),
+   之后每页一张图,点击左/右半屏或方向键翻页,右下角显示页码。
    ============================================================ */
 
 (async function () {
@@ -13,9 +15,7 @@
     cfg = await res.json();
   } catch (e) {
     content.innerHTML =
-      '<p style="color:#c00">无法读取 data/config.json。<br>' +
-      "如果你是直接双击打开 index.html,浏览器会拦截本地文件读取;<br>" +
-      "请部署到 GitHub Pages 后访问,或本地用 VS Code 的 Live Server 预览。</p>";
+      '<p style="color:#c00;padding:64px 56px">无法读取 data/config.json,请检查 JSON 格式是否正确。</p>';
     return;
   }
 
@@ -25,10 +25,7 @@
   if (L.accentColor)   root.setProperty("--accent", L.accentColor);
   if (L.sidebarWidth)  root.setProperty("--sidebar-width", L.sidebarWidth + "px");
   if (L.imageMaxWidth) root.setProperty("--image-max-width", L.imageMaxWidth + "px");
-  if (L.imageGap != null) root.setProperty("--image-gap", L.imageGap + "px");
   if (L.fontScale)     root.setProperty("--font-scale", L.fontScale);
-  root.setProperty("--columns", L.columns || 1);
-  document.body.dataset.theme = L.theme === "dark" ? "dark" : "light";
 
   /* ---------- 站点名称 ---------- */
   document.title = cfg.site.title || "Portfolio";
@@ -36,21 +33,23 @@
   document.getElementById("siteNameEn").textContent = cfg.site.nameEn || "";
   document.getElementById("mobileName").textContent = cfg.site.nameZh || "";
 
-  /* ---------- 收集所有页面(项目 + 简介) ---------- */
+  /* ---------- 收集项目 ---------- */
   const pages = [];
   (cfg.groups || []).forEach((g) =>
-    (g.projects || []).forEach((p) => pages.push({ ...p, group: g.name }))
+    (g.projects || []).forEach((p) => pages.push(p))
   );
 
-  /* ---------- 生成左侧导航 ---------- */
+  /* ---------- 左侧导航 ---------- */
   const navGroups = document.getElementById("navGroups");
   (cfg.groups || []).forEach((g) => {
     const div = document.createElement("div");
     div.className = "nav-group";
-    const title = document.createElement("div");
-    title.className = "nav-group-title";
-    title.textContent = g.name;
-    div.appendChild(title);
+    if (g.name) {
+      const title = document.createElement("div");
+      title.className = "nav-group-title";
+      title.textContent = g.name;
+      div.appendChild(title);
+    }
     (g.projects || []).forEach((p) => {
       const a = document.createElement("a");
       a.className = "nav-link";
@@ -62,7 +61,6 @@
     navGroups.appendChild(div);
   });
 
-  // Info / 简介
   if (cfg.about) {
     const div = document.createElement("div");
     div.className = "nav-group";
@@ -73,49 +71,98 @@
     a.className = "nav-link";
     a.href = "#about";
     a.dataset.id = "about";
-    a.textContent = cfg.about.title || "About";
+    a.textContent = (cfg.about && cfg.about.title) || "About";
     div.appendChild(title);
     div.appendChild(a);
     navGroups.appendChild(div);
   }
 
-  /* ---------- 生成项目页面 ---------- */
+  /* ---------- 页码指示器(全局一个) ---------- */
+  const counter = document.createElement("div");
+  counter.className = "slide-counter";
+  document.body.appendChild(counter);
+
+  /* ---------- 生成项目幻灯片 ---------- */
   content.innerHTML = "";
+  const state = {}; // id -> { index, total }
+
   pages.forEach((p) => {
     const sec = document.createElement("section");
-    sec.className = "project";
+    sec.className = "project slideshow";
     sec.id = "page-" + p.id;
 
-    const h = document.createElement("h1");
-    h.className = "project-title";
-    h.textContent = p.title;
-    sec.appendChild(h);
+    const slides = [];
 
-    if (p.description) {
+    if (p.description && p.description.trim()) {
+      const s = document.createElement("div");
+      s.className = "slide";
+      const box = document.createElement("div");
+      box.className = "slide-text";
+      const h = document.createElement("h1");
+      h.textContent = p.title;
       const d = document.createElement("p");
-      d.className = "project-desc";
       d.textContent = p.description;
-      sec.appendChild(d);
+      box.appendChild(h);
+      box.appendChild(d);
+      s.appendChild(box);
+      slides.push(s);
     }
 
-    const flow = document.createElement("div");
-    flow.className = "image-flow";
     (p.images || []).forEach((file, i) => {
+      const s = document.createElement("div");
+      s.className = "slide";
       const img = document.createElement("img");
-      img.loading = "lazy";
+      img.loading = i < 2 ? "eager" : "lazy";
       img.src = (p.folder || "") + "/" + file;
       img.alt = p.title + " " + (i + 1);
-      img.addEventListener("click", () => openLightbox(img.src));
-      flow.appendChild(img);
+      s.appendChild(img);
+      slides.push(s);
     });
-    sec.appendChild(flow);
+
+    slides.forEach((s) => sec.appendChild(s));
+    state[p.id] = { index: 0, total: slides.length, slides };
+
+    // 左右点击翻页区
+    const prevZone = document.createElement("div");
+    prevZone.className = "slide-zone prev";
+    prevZone.addEventListener("click", () => step(p.id, -1));
+    const nextZone = document.createElement("div");
+    nextZone.className = "slide-zone next";
+    nextZone.addEventListener("click", () => step(p.id, 1));
+    sec.appendChild(prevZone);
+    sec.appendChild(nextZone);
+
+    // 触摸滑动
+    let touchX = null;
+    sec.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    sec.addEventListener("touchend", (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) step(p.id, dx < 0 ? 1 : -1);
+      touchX = null;
+    }, { passive: true });
+
     content.appendChild(sec);
   });
 
-  /* ---------- 简介页面 ---------- */
+  function renderSlides(id) {
+    const st = state[id];
+    if (!st) return;
+    st.slides.forEach((s, i) => s.classList.toggle("current", i === st.index));
+    counter.textContent = (st.index + 1) + " / " + st.total;
+  }
+
+  function step(id, dir) {
+    const st = state[id];
+    if (!st || st.total === 0) return;
+    st.index = (st.index + dir + st.total) % st.total;
+    renderSlides(id);
+  }
+
+  /* ---------- 简介页(普通页面) ---------- */
   if (cfg.about) {
     const sec = document.createElement("section");
-    sec.className = "project";
+    sec.className = "project page";
     sec.id = "page-about";
 
     const h = document.createElement("h1");
@@ -166,16 +213,27 @@
   }
 
   /* ---------- 页面切换 ---------- */
-const firstId = (cfg.site && cfg.site.homePage) || (pages.length ? pages[0].id : "about");
+  const firstId =
+    (cfg.site && cfg.site.homePage) ||
+    (pages.length ? pages[0].id : "about");
+
+  let activeId = null;
 
   function show(id) {
     const target = document.getElementById("page-" + id);
     if (!target) return show(firstId);
+    activeId = id;
     document.querySelectorAll(".project").forEach((s) => s.classList.remove("visible"));
     target.classList.add("visible");
     document.querySelectorAll(".nav-link").forEach((a) =>
       a.classList.toggle("active", a.dataset.id === id)
     );
+    if (state[id]) {
+      counter.classList.add("visible");
+      renderSlides(id);
+    } else {
+      counter.classList.remove("visible");
+    }
     window.scrollTo({ top: 0 });
     sidebar.classList.remove("open");
   }
@@ -185,26 +243,16 @@ const firstId = (cfg.site && cfg.site.homePage) || (pages.length ? pages[0].id :
   );
   show(location.hash.replace("#", "") || firstId);
 
+  /* ---------- 键盘翻页 ---------- */
+  document.addEventListener("keydown", (e) => {
+    if (!activeId || !state[activeId]) return;
+    if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); step(activeId, 1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); step(activeId, -1); }
+  });
+
   /* ---------- 移动端菜单 ---------- */
   const sidebar = document.getElementById("sidebar");
   document.getElementById("menuToggle").addEventListener("click", () =>
     sidebar.classList.toggle("open")
   );
-
-  /* ---------- 图片放大 ---------- */
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  function openLightbox(src) {
-    lightboxImg.src = src;
-    lightbox.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-  lightbox.addEventListener("click", () => {
-    lightbox.hidden = true;
-    lightboxImg.src = "";
-    document.body.style.overflow = "";
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !lightbox.hidden) lightbox.click();
-  });
 })();
