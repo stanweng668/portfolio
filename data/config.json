@@ -24,25 +24,25 @@
         {
           "id": "distortion",
           "title": "    Emitt内容矩阵搭建",
-          "description": "围绕广州摄影工作室 EMITT ATELIER 搭建的多账号内容矩阵，覆盖商业摄影、品牌视觉、新媒体视觉三大内容方向，/从 0 冷启动，以内容驱动私域转化，自然流获客2000+，持续拓展江浙沪品牌客户市场。",
+          "description": "围绕广州摄影工作室 EMITT ATELIER 搭建的多账号内容矩阵，覆盖商业摄影、品牌视觉、新媒体视觉三大内容方向，从 0 冷启动，以内容驱动私域转化，自然流获客2000+，持续拓展江浙沪品牌客户市场。",
           "folder": "images/distortion",
           "images": ["1.jpg", "2.jpg", "3.jpg"]
         },
         {
           "id": "residual-heat",
-          "title": "Residual Heat 余温",
-          "description": "第二个示例项目。把新照片上传到 images/residual-heat/ 文件夹,再把文件名加到下面的 images 列表里即可。",
+          "title": "视觉内容制作",
+          "description": "独立完成多类型视频内容的拍摄与剪辑，涵盖主理人 IP 口播内容、产品信息流内容、达人账号日常内容、时尚穿搭及拍摄花絮，具备从选题策划到拍摄到成片的全流程执行能力。",
           "folder": "images/residual-heat",
           "images": ["1.jpg", "2.jpg"]
         }
       ]
     },
     {
-      "name": "Editorial",
+      "name": "Editorial品牌视觉制片项目",
       "projects": [
         {
           "id": "commercial",
-          "title": "Commercial 商业摄影",
+          "title": "Commercial 商业项目",
           "description": "",
           "folder": "images/commercial",
           "images": ["1.jpg", "2.jpg", "3.jpg"]
