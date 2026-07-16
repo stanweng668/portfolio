@@ -26,7 +26,7 @@
           "title": "    Emitt内容矩阵搭建",
           "description": "围绕广州摄影工作室 EMITT ATELIER 搭建的多账号内容矩阵，覆盖商业摄影、品牌视觉、新媒体视觉三大内容方向，从 0 冷启动，以内容驱动私域转化，自然流获客2000+，持续拓展江浙沪品牌客户市场。",
           "folder": "images/distortion",
-          "images": ["emitt-1.jpg", "emitt-2.jpg", "emitt-3.jpg", "emitt-4.jpg", "emitt-5.jpg", "emitt-6.jpg", "emitt-7.jpg", "emitt-8.jpg"]
+          "images": ["{ "file": "emitt-1.jpg", "link": "https://www.xiaohongshu.com/user/profile/61d1c57b00000000210264d3?xsec_token=ABp_zLTfVPAZeFa0jQeCBtA2lEUGPx4TChZERxkEwZ37I%3D&xsec_source=pc_search", "linkText": "查看小红书主页 →" },", "emitt-2.jpg", "emitt-3.jpg", "emitt-4.jpg", "emitt-5.jpg", "emitt-6.jpg", "emitt-7.jpg", "emitt-8.jpg"]
         },
         {
           "id": "residual-heat",
