@@ -1,5 +1,5 @@
 /* ============================================================
-   摄影作品集模板 v3 — 幻灯片 + 图片链接
+   摄影作品集模板 v4 — 幻灯片 + 图片链接(修复移动端菜单)
    日常不需要改这个文件,内容都在 data/config.json 里配置。
 
    images 列表支持两种写法(可混用):
@@ -41,6 +41,12 @@
   const pages = [];
   (cfg.groups || []).forEach((g) =>
     (g.projects || []).forEach((p) => pages.push(p))
+  );
+
+  /* ---------- 移动端菜单(必须先于 show() 初始化) ---------- */
+  const sidebar = document.getElementById("sidebar");
+  document.getElementById("menuToggle").addEventListener("click", () =>
+    sidebar.classList.toggle("open")
   );
 
   /* ---------- 左侧导航 ---------- */
@@ -274,9 +280,4 @@
     if (e.key === "ArrowLeft") { e.preventDefault(); step(activeId, -1); }
   });
 
-  /* ---------- 移动端菜单 ---------- */
-  const sidebar = document.getElementById("sidebar");
-  document.getElementById("menuToggle").addEventListener("click", () =>
-    sidebar.classList.toggle("open")
-  );
 })();
