@@ -98,17 +98,75 @@
       ]
     },
     {
-      "name": "Editorial品牌视觉制片项目",
+      "name": "Editorial 品牌视觉制片",
       "projects": [
         {
-          "id": "commercial",
-          "title": "Commercial 商业项目",
-          "description": "",
-          "folder": "images/commercial",
+          "id": "vermo",
+          "title": "Vermo 2023夏季拍摄",
+          "description": "Vermo 是一个从批发转型零售的新品牌。在中性风格视觉高度同质化的市场环境下,该系列反其道而行,启用不同体型、不同性别的模特组合拍摄,以真实多元的身体叙事建立品牌记忆点。系列助力品牌冲至中性风格销售榜单第二名,传播实现破圈——王菲也曾上身该品牌服装。",
+          "folder": "images/vermo",
           "images": [
-            "1.jpg",
-            "2.jpg",
-            "3.jpg"
+            {
+              "file": "vermo-1.jpg",
+              "link": "https://www.xiaohongshu.com/explore/6493aa440000000012030ea5?xsec_token=ABKrV1MKGmUJBEOA6aOwZkkciaSZSFeQC8ZNaeyT5vK-8=&xsec_source=pc_search&source=web_search_result_notes",
+              "linkText": "查看原笔记 →"
+            },
+            "vermo-2.jpg",
+            "vermo-3.jpg",
+            "vermo-4.jpg",
+            "vermo-5.jpg",
+            "vermo-6.jpg",
+            "vermo-7.jpg"
+          ]
+        },
+        {
+          "id": "adidas-4200m",
+          "title": "4200M ADIDAS 复古街拍",
+          "description": "以 ADIDAS 单品混搭为线索,与模特联动策划的一场属于男孩女孩们的城市街头企划,用复古镜头语言记录年轻人的日常状态。系列内容在抖音收获百万播放,并因此获得 ADIDAS 品牌方的邀约合作。",
+          "folder": "images/adidas",
+          "images": [
+            {
+              "file": "adidas-1.jpg",
+              "link": "https://www.douyin.com/video/7130289388126211341",
+              "linkText": "查看抖音视频 →"
+            },
+            {
+              "file": "adidas-2.jpg",
+              "link": "https://www.douyin.com/video/7119056892621606147",
+              "linkText": "查看抖音视频 →"
+            },
+            "adidas-3.jpg",
+            "adidas-4.jpg",
+            "adidas-5.jpg",
+            "adidas-6.jpg",
+            "adidas-7.jpg",
+            "adidas-8.jpg",
+            "adidas-9.jpg"
+          ]
+        },
+        {
+          "id": "puki",
+          "title": "PUKI 2026夏季拍摄",
+          "description": "在竞争激烈且普遍低客单价的赛道里,该系列为 PUKI 的 2026 夏季完成视觉定调,以辨识度支撑起品牌溢价,最终在同类型品牌中排名第一。",
+          "folder": "images/puki",
+          "images": [
+            {
+              "file": "puki-1.jpg",
+              "link": "https://www.xiaohongshu.com/explore/6a183bd4000000003601cfdf?xsec_token=ABmxJgo5vOIlFz2fTU-ec1pn-7ZBDWWPQKfSQqF70K8Rs=&xsec_source=pc_search&source=web_search_result_notes",
+              "linkText": "查看原笔记 →"
+            },
+            {
+              "file": "puki-2.jpg",
+              "link": "https://www.xiaohongshu.com/explore/69cfa81a0000000023027257?xsec_token=ABwL4rqI_O8dU7UgfZejqQgTEPuodC-MiLg50mAcuYaYw=&xsec_source=pc_user",
+              "linkText": "查看原笔记 →"
+            },
+            "puki-3.jpg",
+            "puki-4.jpg",
+            "puki-5.jpg",
+            "puki-6.jpg",
+            "puki-7.jpg",
+            "puki-8.jpg",
+            "puki-9.jpg"
           ]
         }
       ]
