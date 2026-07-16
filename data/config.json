@@ -52,13 +52,13 @@
   ],
 
   "about": {
-    "title": "艺术家简介",
-    "bio": "这里写个人简介。介绍你的创作方向、关注的主题、代表作品等。\n\n第二段简介内容。",
+    "title": "关于我",
+    "bio": "具备品牌投放与内容运营双线背景,兼有内容策划及拍摄剪辑能力。\n\n曾于小红书头部 MCN 公司侵尘文化主导 Wakamoto、敷尔佳等头部品牌达人投放执行;后独立搭建广告公司 EMITT ATELIER 8 个账号新媒体矩阵,实现小红书浏览量 300W+、私域转化品牌客户 3000+;同期承担 Vermo、Rarelyalike 等品牌视觉项目制片统筹。",
     "portrait": "images/portrait.jpg",
     "contact": {
-      "phone": "+86 138 0000 0000 (微信同号)",
-      "email": "hello@example.com",
-      "extra": ""
+     "phone": "+17806241093 (微信同号)",
+     "email": "17806241093@163.com",
+     "extra": ""
     }
   }
 }
