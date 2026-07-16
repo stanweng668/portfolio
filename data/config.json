@@ -1,10 +1,10 @@
 {
-  "site": {
+    "site": {
     "homePage": "about",
-    "title": "你的名字 | Your Name | Photographer",
-    "nameZh": "你的名字",
-    "nameEn": "Your Name",
-    "footer": "© 2026 Your Name. All rights reserved."
+    "title": "翁鑫 | STANLEY | Photographer",
+    "nameZh": "翁鑫",
+    "nameEn": "STANLEY",
+    "footer": "© 2026 STANLEY. All rights reserved."
   },
 
   "layout": {
