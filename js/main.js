@@ -1,8 +1,12 @@
 /* ============================================================
-   摄影作品集模板 v2 — 幻灯片展示模式
+   摄影作品集模板 v3 — 幻灯片 + 图片链接
    日常不需要改这个文件,内容都在 data/config.json 里配置。
-   项目页:第一页是"标题+描述"(描述为空则跳过),
-   之后每页一张图,点击左/右半屏或方向键翻页,右下角显示页码。
+
+   images 列表支持两种写法(可混用):
+     "emitt-1.jpg"
+     { "file": "emitt-2.jpg", "link": "https://...", "linkText": "查看原笔记 →" }
+   带 link 的图片会在图片下方显示可点击的链接文字,
+   点击图片本身仍然是翻页。
    ============================================================ */
 
 (async function () {
@@ -77,14 +81,14 @@
     navGroups.appendChild(div);
   }
 
-  /* ---------- 页码指示器(全局一个) ---------- */
+  /* ---------- 页码指示器 ---------- */
   const counter = document.createElement("div");
   counter.className = "slide-counter";
   document.body.appendChild(counter);
 
   /* ---------- 生成项目幻灯片 ---------- */
   content.innerHTML = "";
-  const state = {}; // id -> { index, total }
+  const state = {}; // id -> { index, total, slides }
 
   pages.forEach((p) => {
     const sec = document.createElement("section");
@@ -108,14 +112,34 @@
       slides.push(s);
     }
 
-    (p.images || []).forEach((file, i) => {
+    (p.images || []).forEach((item, i) => {
+      // 兼容两种写法:"文件名" 或 { file, link, linkText }
+      const info = typeof item === "string" ? { file: item } : (item || {});
+      if (!info.file) return;
+
       const s = document.createElement("div");
       s.className = "slide";
+
+      const fig = document.createElement("figure");
+      fig.className = "slide-figure" + (info.link ? " has-link" : "");
+
       const img = document.createElement("img");
       img.loading = i < 2 ? "eager" : "lazy";
-      img.src = (p.folder || "") + "/" + file;
+      img.src = (p.folder || "") + "/" + info.file;
       img.alt = p.title + " " + (i + 1);
-      s.appendChild(img);
+      fig.appendChild(img);
+
+      if (info.link) {
+        const a = document.createElement("a");
+        a.className = "slide-link";
+        a.href = info.link;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = info.linkText || "查看链接 →";
+        fig.appendChild(a);
+      }
+
+      s.appendChild(fig);
       slides.push(s);
     });
 
@@ -159,7 +183,7 @@
     renderSlides(id);
   }
 
-  /* ---------- 简介页(普通页面) ---------- */
+  /* ---------- 简介页 ---------- */
   if (cfg.about) {
     const sec = document.createElement("section");
     sec.className = "project page";
