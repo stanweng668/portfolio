@@ -23,8 +23,8 @@
       "projects": [
         {
           "id": "distortion",
-          "title": "Distortion 失真",
-          "description": "这里写项目描述。该系列作品以低精度 3D 扫描现实物体为起点,通过三维软件进行再构与拼贴,生成一种不完整、脆弱且破碎的现实版本。\n\n支持空行分段:配置文件里用 \\n\\n 表示分段。",
+          "title": "    Emitt内容矩阵搭建",
+          "description": "围绕广州摄影工作室 EMITT ATELIER 搭建的多账号内容矩阵，覆盖商业摄影、品牌视觉、新媒体视觉三大内容方向，/从 0 冷启动，以内容驱动私域转化，自然流获客2000+，持续拓展江浙沪品牌客户市场。",
           "folder": "images/distortion",
           "images": ["1.jpg", "2.jpg", "3.jpg"]
         },
