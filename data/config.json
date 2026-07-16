@@ -1,12 +1,11 @@
 {
-    "site": {
+  "site": {
     "homePage": "about",
     "title": "翁鑫 | STANLEY | Photographer",
     "nameZh": "翁鑫",
     "nameEn": "STANLEY",
     "footer": "© 2026 STANLEY. All rights reserved."
   },
-
   "layout": {
     "theme": "light",
     "accentColor": "#111111",
@@ -16,23 +15,67 @@
     "sidebarWidth": 240,
     "fontScale": 1.0
   },
-
   "groups": [
     {
       "name": "Projects 内容营销项目",
       "projects": [
         {
           "id": "distortion",
-          "title": "    Emitt内容矩阵搭建",
+          "title": "Emitt内容矩阵搭建",
           "description": "围绕广州摄影工作室 EMITT ATELIER 搭建的多账号内容矩阵，覆盖商业摄影、品牌视觉、新媒体视觉三大内容方向，从 0 冷启动，以内容驱动私域转化，自然流获客2000+，持续拓展江浙沪品牌客户市场。",
           "folder": "images/distortion",
-          "images": [{ "file": "emitt-1.jpg", "link": "https://www.xiaohongshu.com/user/profile/61d1c57b00000000210264d3", "linkText": "查看小红书主页 →" }, { "file": "emitt-2.jpg", "link": "https://www.xiaohongshu.com/user/profile/64a53fae000000001c02af71", "linkText": "查看小红书主页 →" }, { "file": "emitt-3.jpg", "link": "https://www.xiaohongshu.com/user/profile/5f682c53000000000101dd43", "linkText": "查看小红书主页 →" }, { "file": "emitt-4.jpg", "link": "https://www.xiaohongshu.com/user/profile/65acf7ec0000000014007062", "linkText": "查看小红书主页 →" }, { "file": "emitt-5.jpg", "link": "https://www.xiaohongshu.com/user/profile/6354e6a4000000001901f365", "linkText": "查看小红书主页 →" }, { "file": "emitt-6.jpg", "link": "https://www.xiaohongshu.com/user/profile/6497ccd3000000002a035260", "linkText": "查看小红书主页 →" }, { "file": "emitt-7.jpg", "link": "https://www.xiaohongshu.com/user/profile/612c5f3300000000010096e1", "linkText": "查看小红书主页 →" }, { "file": "emitt-8.jpg", "link": "https://www.xiaohongshu.com/user/profile/61c6fc4e000000001000ff1a", "linkText": "查看小红书主页 →" }],
+          "images": [
+            {
+              "file": "emitt-1.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/61d1c57b00000000210264d3",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-2.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/64a53fae000000001c02af71",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-3.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/5f682c53000000000101dd43",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-4.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/65acf7ec0000000014007062",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-5.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/6354e6a4000000001901f365",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-6.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/6497ccd3000000002a035260",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-7.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/612c5f3300000000010096e1",
+              "linkText": "查看小红书主页 →"
+            },
+            {
+              "file": "emitt-8.jpg",
+              "link": "https://www.xiaohongshu.com/user/profile/61c6fc4e000000001000ff1a",
+              "linkText": "查看小红书主页 →"
+            }
+          ]
+        },
         {
           "id": "residual-heat",
           "title": "视觉内容制作",
           "description": "独立完成多类型视频内容的拍摄与剪辑，涵盖主理人 IP 口播内容、产品信息流内容、达人账号日常内容、时尚穿搭及拍摄花絮，具备从选题策划到拍摄到成片的全流程执行能力。",
           "folder": "images/residual-heat",
-          "images": ["1.jpg", "2.jpg"]
+          "images": [
+            "1.jpg",
+            "2.jpg"
+          ]
         }
       ]
     },
@@ -44,20 +87,23 @@
           "title": "Commercial 商业项目",
           "description": "",
           "folder": "images/commercial",
-          "images": ["1.jpg", "2.jpg", "3.jpg"]
+          "images": [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg"
+          ]
         }
       ]
     }
   ],
-
   "about": {
     "title": "关于我",
     "bio": "具备品牌投放与内容运营双线背景,兼有内容策划及拍摄剪辑能力。\n\n曾于小红书头部 MCN 公司侵尘文化主导 Wakamoto、敷尔佳等头部品牌达人投放执行;后独立搭建广告公司 EMITT ATELIER 8 个账号新媒体矩阵,实现小红书浏览量 300W+、私域转化品牌客户 3000+;同期承担 Vermo、Rarelyalike 等品牌视觉项目制片统筹。",
     "portrait": "images/portrait.jpg",
     "contact": {
-     "phone": "+17806241093 (微信同号)",
-     "email": "17806241093@163.com",
-     "extra": ""
+      "phone": "+17806241093 (微信同号)",
+      "email": "17806241093@163.com",
+      "extra": ""
     }
   }
 }
