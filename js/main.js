@@ -166,7 +166,7 @@
   }
 
   /* ---------- 页面切换 ---------- */
-  const firstId = pages.length ? pages[0].id : "about";
+const firstId = (cfg.site && cfg.site.homePage) || (pages.length ? pages[0].id : "about");
 
   function show(id) {
     const target = document.getElementById("page-" + id);
