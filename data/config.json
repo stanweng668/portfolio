@@ -73,8 +73,26 @@
           "description": "独立完成多类型视频内容的拍摄与剪辑，涵盖主理人 IP 口播内容、产品信息流内容、达人账号日常内容、时尚穿搭及拍摄花絮，具备从选题策划到拍摄到成片的全流程执行能力。",
           "folder": "images/residual-heat",
           "images": [
-            "1.jpg",
-            "2.jpg"
+            {
+              "file": "video-1.jpg",
+              "link": "https://www.xiaohongshu.com/explore/6551be53000000001b00e1de?xsec_token=ABdAfq6Kvm25Ph1uEDzPciu3axd_9jKOqajFBh2QFmqD4=&xsec_source=pc_user",
+              "linkText": "查看原笔记 →"
+            },
+            {
+              "file": "video-2.jpg",
+              "link": "https://www.xiaohongshu.com/explore/64f9e4a00000000015009700?xsec_token=AB62g0R-lpxIypzs3Ym5DAkER2FQfFpDJb5pbbBd0vdcw=&xsec_source=pc_user",
+              "linkText": "查看原笔记 →"
+            },
+            {
+              "file": "video-3.jpg",
+              "link": "https://www.douyin.com/video/7132075399642713375",
+              "linkText": "查看抖音视频 →"
+            },
+            {
+              "file": "video-4.jpg",
+              "link": "https://www.douyin.com/video/7657807049354466410",
+              "linkText": "查看抖音视频 →"
+            }
           ]
         }
       ]
